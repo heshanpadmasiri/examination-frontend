@@ -19,6 +19,9 @@ import {ProfileComponent} from './components/profile/profile.component';
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import {TokenInterceptor} from './services/token.interceptor';
 import {AuthGuard} from './guards/auth.guard';
+import {ResultsComponent} from './components/results/results.component';
+import {UserServicesService} from './services/user-services.service';
+import {RegisterToModuleComponent} from './components/register-to-module/register-to-module.component';
 
 // routes
 const appRoutes: Routes = [
@@ -26,7 +29,8 @@ const appRoutes: Routes = [
   {path: 'register', component: RegisterComponent},
   {path: 'login', component: LoginComponent},
   {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
-  {path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]}
+  {path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
+  {path: 'results', component: ResultsComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({
@@ -37,7 +41,9 @@ const appRoutes: Routes = [
     RegisterComponent,
     HomeComponent,
     DashboardComponent,
-    ProfileComponent
+    ProfileComponent,
+    ResultsComponent,
+    RegisterToModuleComponent
   ],
   imports: [
     BrowserModule,
@@ -54,7 +60,8 @@ const appRoutes: Routes = [
       useClass: TokenInterceptor,
       multi: true
     },
-    AuthGuard
+    AuthGuard,
+    UserServicesService
   ],
   bootstrap: [AppComponent]
 })

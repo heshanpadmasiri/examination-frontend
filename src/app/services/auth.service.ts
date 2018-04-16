@@ -17,6 +17,21 @@ export class AuthService {
     return localStorage.getItem('id_token');
   }
 
+  public getUserType(): string {
+    const user = JSON.parse(localStorage.getItem('user'));
+    return user.type;
+  }
+
+  public getUserId(): string {
+    const user = JSON.parse(localStorage.getItem('user'));
+    return user.id;
+  }
+
+  // this will also check if authenticated so no need to double chck
+  public isStudent(): boolean {
+    return this.isAuthenticated() && (this.getUserType() === 'student');
+  }
+
   public isAuthenticated(): boolean {
     // get the token
     const token = this.getToken();

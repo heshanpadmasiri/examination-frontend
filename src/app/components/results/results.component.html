@@ -1,0 +1,16 @@
+<div *ngIf="resultsReady">
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th scope="col">Module</th>
+      <th scope="col">Result</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let result of results">
+      <td>{{result.module}}</td>
+      <td>{{result.result}}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
