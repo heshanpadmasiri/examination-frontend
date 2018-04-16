@@ -31,8 +31,9 @@ export class AuthService {
   }
 
   authenticateUser(user): Observable<AuthenticateResponse> {
+    console.log(user);
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
-    return this.http.post('http://localhost:3000/users/authenticate', user, {headers: headers}) as Observable<AuthenticateResponse>;
+    return this.http.post('http://localhost:3000/users/login', user, {headers: headers}) as Observable<AuthenticateResponse>;
   }
 
   storeUserData(token, user) {

@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
 
     this.auth.authenticateUser(user).subscribe(data => {
       if (data.success) {
-        // Login successfull store the token
+        // Login successful store the token
         this.auth.storeUserData(data.token, data.user);
         this.flashMessagesService.show('Login successful', {
           cssClass: 'alert-success',
