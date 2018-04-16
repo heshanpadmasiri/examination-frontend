@@ -1,0 +1,9 @@
+<h2 class='page-header'>Register To Module</h2>
+<form (submit)="onRegistrationSubmit()">
+  <div class="form-group">
+    <label>Module Code:</label>
+    <input type="text" class="form-control" [(ngModel)]="moduleCode" name="ModuleCode">
+  </div>
+
+  <input type="submit" class="btn btn-primary" value="Submit">
+</form>

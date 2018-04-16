@@ -1,3 +1,3 @@
-<p>
-  {{userType}}
-</p>
+<div *ngFor="let message of moduleMessages" class="alert alert-primary" role="alert">
+  {{message.content}}
+</div>

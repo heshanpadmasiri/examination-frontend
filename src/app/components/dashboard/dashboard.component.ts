@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthService} from '../../services/auth.service';
+import {UserServicesService} from '../../services/user-services.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,13 +9,35 @@ import {AuthService} from '../../services/auth.service';
 })
 export class DashboardComponent implements OnInit {
 
-  userType: string;
+  messages: Message[];
+  moduleMessages: Message[];
 
-  constructor(authService: AuthService) {
-    this.userType = authService.getUserType();
+  constructor(private userService: UserServicesService) {
+    this.moduleMessages = [];
   }
 
   ngOnInit() {
+    this.userService.getMessages().subscribe(next => {
+      console.log(next);
+      if (next.success) {
+        this.messages = next.msg;
+        this.addToMessageArrays(this.messages);
+      }
+    });
   }
 
+  addToMessageArrays(messages: Message[]) {
+    messages.forEach(message => {
+      if (message.type === 'module message') {
+        this.moduleMessages.push(message);
+      }
+    });
+  }
+
+}
+
+interface Message {
+  author: string;
+  content: string;
+  type: string;
 }
