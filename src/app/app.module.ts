@@ -19,6 +19,7 @@ import {AuthGuard} from './guards/auth.guard';
 import {ResultsComponent} from './components/results/results.component';
 import {UserServicesService} from './services/user-services.service';
 import {RegisterToModuleComponent} from './components/register-to-module/register-to-module.component';
+import {ReCorrectionComponent} from './components/re-correction/re-correction.component';
 
 // routes
 const appRoutes: Routes = [
@@ -27,7 +28,8 @@ const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
   {path: 'results', component: ResultsComponent, canActivate: [AuthGuard]},
-  {path: 'register-module', component: RegisterToModuleComponent, canActivate: [AuthGuard]}
+  {path: 'register-selectedModule', component: RegisterToModuleComponent, canActivate: [AuthGuard]},
+  {path: 're-correction', component: ReCorrectionComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({
@@ -39,7 +41,8 @@ const appRoutes: Routes = [
     HomeComponent,
     DashboardComponent,
     ResultsComponent,
-    RegisterToModuleComponent
+    RegisterToModuleComponent,
+    ReCorrectionComponent
   ],
   imports: [
     BrowserModule,

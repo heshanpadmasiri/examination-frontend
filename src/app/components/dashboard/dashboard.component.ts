@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {AuthService} from '../../services/auth.service';
 import {UserServicesService} from '../../services/user-services.service';
 
 @Component({
@@ -28,7 +27,7 @@ export class DashboardComponent implements OnInit {
 
   addToMessageArrays(messages: Message[]) {
     messages.forEach(message => {
-      if (message.type === 'module message') {
+      if (message.type === 'selectedModule message') {
         this.moduleMessages.push(message);
       }
     });

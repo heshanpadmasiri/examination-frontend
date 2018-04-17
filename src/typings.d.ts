@@ -1,4 +1,4 @@
-/* SystemJS module definition */
+/* SystemJS selectedModule definition */
 declare var module: NodeModule;
 
 interface NodeModule {

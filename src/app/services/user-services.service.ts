@@ -2,7 +2,6 @@ import {Injectable} from '@angular/core';
 import {AuthService} from './auth.service';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
-import {Data} from '@angular/router';
 
 @Injectable()
 export class UserServicesService {
@@ -11,6 +10,21 @@ export class UserServicesService {
 
   constructor(public authService: AuthService,
               public http: HttpClient) {
+  }
+
+  getRegisteredModules() {
+    const params = {
+      userId: this.authService.getUserId()
+    };
+    return this.http.get('http://localhost:3000/modules/registeredModule', {params: params}) as Observable<DataMessage>;
+  }
+
+  requestReCorrection(moduleId: string) {
+    const params = {
+      userId: this.authService.getUserId(),
+      moduleId: moduleId
+    };
+    return this.http.post('http://localhost:3000/modules/re-correction', params) as Observable<SimpleMessage>;
   }
 
   getOverallResults() {

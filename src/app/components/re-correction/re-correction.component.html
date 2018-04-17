@@ -1,0 +1,9 @@
+<form (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="moduleSelect">Select Module:</label>
+    <select #select class="form-control" id="moduleSelect" (change)="onChange(select.value)">
+      <option *ngFor="let module of registeredModules" [value]="module">{{module}}</option>
+    </select>
+  </div>
+  <input type="submit" class="btn btn-primary" value="Submit">
+</form>
