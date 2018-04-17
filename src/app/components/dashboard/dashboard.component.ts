@@ -10,9 +10,11 @@ export class DashboardComponent implements OnInit {
 
   messages: Message[];
   moduleMessages: Message[];
+  reCorrectionMessages: Message[];
 
   constructor(private userService: UserServicesService) {
     this.moduleMessages = [];
+    this.reCorrectionMessages = [];
   }
 
   ngOnInit() {
@@ -29,6 +31,8 @@ export class DashboardComponent implements OnInit {
     messages.forEach(message => {
       if (message.type === 'module message') {
         this.moduleMessages.push(message);
+      } else if (message.type === 're-correction request') {
+        this.reCorrectionMessages.push(message);
       }
     });
   }
