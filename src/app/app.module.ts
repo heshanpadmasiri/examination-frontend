@@ -28,7 +28,7 @@ const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
   {path: 'results', component: ResultsComponent, canActivate: [AuthGuard]},
-  {path: 'register-selectedModule', component: RegisterToModuleComponent, canActivate: [AuthGuard]},
+  {path: 'register-module', component: RegisterToModuleComponent, canActivate: [AuthGuard]},
   {path: 're-correction', component: ReCorrectionComponent, canActivate: [AuthGuard]}
 ];
 
