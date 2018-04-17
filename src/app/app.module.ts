@@ -20,6 +20,7 @@ import {ResultsComponent} from './components/results/results.component';
 import {UserServicesService} from './services/user-services.service';
 import {RegisterToModuleComponent} from './components/register-to-module/register-to-module.component';
 import {ReCorrectionComponent} from './components/re-correction/re-correction.component';
+import {EnterResultsComponent} from './enter-results/enter-results.component';
 
 // routes
 const appRoutes: Routes = [
@@ -29,7 +30,8 @@ const appRoutes: Routes = [
   {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
   {path: 'results', component: ResultsComponent, canActivate: [AuthGuard]},
   {path: 'register-module', component: RegisterToModuleComponent, canActivate: [AuthGuard]},
-  {path: 're-correction', component: ReCorrectionComponent, canActivate: [AuthGuard]}
+  {path: 're-correction', component: ReCorrectionComponent, canActivate: [AuthGuard]},
+  {path: 'enter-results', component: EnterResultsComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({
@@ -42,7 +44,8 @@ const appRoutes: Routes = [
     DashboardComponent,
     ResultsComponent,
     RegisterToModuleComponent,
-    ReCorrectionComponent
+    ReCorrectionComponent,
+    EnterResultsComponent
   ],
   imports: [
     BrowserModule,
