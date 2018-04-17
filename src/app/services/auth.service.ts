@@ -2,7 +2,6 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import 'rxjs/add/operator/map';
 import {Observable} from 'rxjs/Observable';
-import decode from 'jwt-decode';
 import {tokenNotExpired} from 'angular2-jwt';
 
 @Injectable()
@@ -27,9 +26,13 @@ export class AuthService {
     return user.id;
   }
 
-  // this will also check if authenticated so no need to double chck
+  // this will also check if authenticated so no need to double check
   public isStudent(): boolean {
     return this.isAuthenticated() && (this.getUserType() === 'student');
+  }
+
+  public isAcademic(): boolean {
+    return this.isAuthenticated() && (this.getUserType() === 'academic');
   }
 
   public isAuthenticated(): boolean {
