@@ -27,7 +27,7 @@ export class DashboardComponent implements OnInit {
 
   addToMessageArrays(messages: Message[]) {
     messages.forEach(message => {
-      if (message.type === 'selectedModule message') {
+      if (message.type === 'module message') {
         this.moduleMessages.push(message);
       }
     });
