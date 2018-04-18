@@ -21,6 +21,7 @@ import {UserServicesService} from './services/user-services.service';
 import {RegisterToModuleComponent} from './components/register-to-module/register-to-module.component';
 import {ReCorrectionComponent} from './components/re-correction/re-correction.component';
 import {EnterResultsComponent} from './enter-results/enter-results.component';
+import {ModuleService} from './services/module.service';
 
 // routes
 const appRoutes: Routes = [
@@ -63,7 +64,8 @@ const appRoutes: Routes = [
       multi: true
     },
     AuthGuard,
-    UserServicesService
+    UserServicesService,
+    ModuleService
   ],
   bootstrap: [AppComponent]
 })

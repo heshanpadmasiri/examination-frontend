@@ -19,6 +19,13 @@ export class UserServicesService {
     return this.http.get('http://localhost:3000/modules/registeredModule', {params: params}) as Observable<DataMessage>;
   }
 
+  getAdminModules() {
+    const params = {
+      userId: this.authService.getUserId()
+    };
+    return this.http.get('http://localhost:3000/modules/adminModules', {params: params}) as Observable<DataMessage>;
+  }
+
   requestReCorrection(moduleId: string) {
     const params = {
       userId: this.authService.getUserId(),
@@ -56,7 +63,7 @@ interface DataMessage {
   msg: any[];
 }
 
-interface SimpleMessage {
+export interface SimpleMessage {
   success: boolean;
   msg: string;
 }
