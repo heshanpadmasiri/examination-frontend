@@ -3,6 +3,7 @@ import {Router} from '@angular/router';
 import {ValidateService} from '../../services/validate.service';
 import {AuthService} from '../../services/auth.service';
 import {FlashMessagesService} from 'angular2-flash-messages';
+import { UserServicesService } from '../../services/user-services.service';
 
 @Component({
   selector: 'app-register',
@@ -10,18 +11,21 @@ import {FlashMessagesService} from 'angular2-flash-messages';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  name: String;
-  userName: String;
-  password: String;
-  email: String;
+  name: string;
+  userName: string;
+  password: string;
+  email: string;
 
-  emailValid =true;
+  emailValid = true;
+  userIdValid = true;
+  userIdMessage ='';
 
   constructor(
     private validateService: ValidateService,
     private flashMessagesService: FlashMessagesService,
     private auth: AuthService,
-    private router: Router
+    private router: Router,
+    private userService: UserServicesService
   ) {
   }
 
@@ -61,6 +65,27 @@ export class RegisterComponent implements OnInit {
 
   validateEmail(){
     this.emailValid = this.validateService.validateEmail(this.email);
+  }
+
+   validateUserId(){
+    if(this.validateService.validateUserId(this.userName)){
+      console.log(this.userName);
+      this.userService.validateUserId(this.userName).subscribe(result => {
+        if(result.success){
+          console.log(result);
+          if(result.msg){
+            this.userIdValid = true;
+            this.userIdMessage = 'That userName is available';
+          } else {
+            this.userIdValid = false;
+            this.userIdMessage = 'That userName is already taken';
+          }
+        }
+      })
+    } else {
+      this.userIdValid = false;
+      this.userIdMessage = 'Invalid format';
+    }
   }
 
 }

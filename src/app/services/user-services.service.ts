@@ -56,6 +56,13 @@ export class UserServicesService {
     return this.http.post('http://localhost:3000/modules/registerToModule', params) as Observable<SimpleMessage>;
   }
 
+  validateUserId(userId: string){
+    const params = {
+      userId: userId
+    };
+    return this.http.get(this.baseUrl + '/checkAvailbility', {params: params}) as Observable<ValidationMessage>;
+  }
+
 }
 
 interface DataMessage {
@@ -66,4 +73,9 @@ interface DataMessage {
 export interface SimpleMessage {
   success: boolean;
   msg: string;
+}
+
+export interface ValidationMessage {
+  success: boolean;
+  msg: boolean;
 }
