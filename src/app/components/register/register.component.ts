@@ -15,6 +15,8 @@ export class RegisterComponent implements OnInit {
   password: String;
   email: String;
 
+  emailValid =true;
+
   constructor(
     private validateService: ValidateService,
     private flashMessagesService: FlashMessagesService,
@@ -55,6 +57,10 @@ export class RegisterComponent implements OnInit {
         this.router.navigate(['/register']);
       }
     });
+  }
+
+  validateEmail(){
+    this.emailValid = this.validateService.validateEmail(this.email);
   }
 
 }
