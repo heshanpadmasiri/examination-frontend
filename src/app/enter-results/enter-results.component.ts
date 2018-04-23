@@ -39,6 +39,7 @@ export class EnterResultsComponent implements OnInit {
     });
   }
 
+  // Use to update current results
   updateCurrentResult() {
     this.registeredStudents = [];
     this.currentResult = [];
