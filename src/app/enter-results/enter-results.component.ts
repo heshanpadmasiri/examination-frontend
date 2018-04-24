@@ -16,19 +16,21 @@ export class EnterResultsComponent implements OnInit {
   currentResult = [];
   registeredStudents = [];
   currentModule: string;
-
+//used to inject things like services when component is being constructed for the further use
   constructor(private userService: UserServicesService,
               private moduleService: ModuleService,
               private flashMessageService: FlashMessagesService) {
   }
-
+//finished initialising the component
   ngOnInit() {
+    //executes the observable
     this.userService.getAdminModules().subscribe(message => {
       if (message.success) {
         this.adminModules = message.msg;
         if (this.adminModules.length > 0) {
           this.currentModule = this.adminModules[0];
-          this.moduleData = this.moduleService.getModuleData(this.adminModules[0]).subscribe(next => {
+          //execute the observable
+          this.moduleData = this.moduleService.getModuleData(this.adminModules[0]).subscribe(next  => {
             if (next.success) {
               this.moduleData = next.msg;
               this.updateCurrentResult();
@@ -43,7 +45,9 @@ export class EnterResultsComponent implements OnInit {
   updateCurrentResult() {
     this.registeredStudents = [];
     this.currentResult = [];
+
     this.moduleData.registeredStudents.forEach(student => {
+      console.log()
       this.registeredStudents.push(student);
     });
     if (this.moduleData.resultAvailable) {
