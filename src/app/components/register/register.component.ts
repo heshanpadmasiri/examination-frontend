@@ -18,7 +18,7 @@ export class RegisterComponent implements OnInit {
 
   emailValid = true;
   userIdValid = true;
-  userIdMessage ='';
+  userIdMessage = '';
 
   constructor(
     private validateService: ValidateService,
@@ -63,17 +63,17 @@ export class RegisterComponent implements OnInit {
     });
   }
 
-  validateEmail(){
+  validateEmail() {
     this.emailValid = this.validateService.validateEmail(this.email);
   }
 
-   validateUserId(){
-    if(this.validateService.validateUserId(this.userName)){
+   validateUserId() {
+    if (this.validateService.validateUserId(this.userName)) {
       console.log(this.userName);
       this.userService.validateUserId(this.userName).subscribe(result => {
-        if(result.success){
+        if (result.success) {
           console.log(result);
-          if(result.msg){
+          if (result.msg) {
             this.userIdValid = true;
             this.userIdMessage = 'That userName is available';
           } else {
@@ -81,7 +81,7 @@ export class RegisterComponent implements OnInit {
             this.userIdMessage = 'That userName is already taken';
           }
         }
-      })
+      });
     } else {
       this.userIdValid = false;
       this.userIdMessage = 'Invalid format';

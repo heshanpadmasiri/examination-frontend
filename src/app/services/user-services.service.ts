@@ -56,7 +56,7 @@ export class UserServicesService {
     return this.http.post('http://localhost:3000/modules/registerToModule', params) as Observable<SimpleMessage>;
   }
 
-  validateUserId(userId: string){
+  validateUserId(userId: string) {
     const params = {
       userId: userId
     };

@@ -22,6 +22,7 @@ import {RegisterToModuleComponent} from './components/register-to-module/registe
 import {ReCorrectionComponent} from './components/re-correction/re-correction.component';
 import {EnterResultsComponent} from './enter-results/enter-results.component';
 import {ModuleService} from './services/module.service';
+import { CreateModuleComponent } from './components/create-module/create-module.component';
 
 // routes
 const appRoutes: Routes = [
@@ -46,7 +47,8 @@ const appRoutes: Routes = [
     ResultsComponent,
     RegisterToModuleComponent,
     ReCorrectionComponent,
-    EnterResultsComponent
+    EnterResultsComponent,
+    CreateModuleComponent
   ],
   imports: [
     BrowserModule,
