@@ -65,20 +65,22 @@ export class FileUploadComponent implements OnInit {
 
       this.moduleServices.recordUpload(this.module, fileName).subscribe(res => {
         if (res.success) {
-          this.flashMessageService.show('UploadComplete', {
+          this.flashMessageService.show('Upload Complete', {
             cssClass: 'alert-success',
             timeOut: 5000
           });
-          this.unBlockUpload();
         } else {
           console.log(res);
-          this.flashMessageService.show(res.msg, {
+          this.flashMessageService.show('Upload failed', {
             cssClass: 'alert-danger',
             timeOut: 5000
           });
         }
+        this.unBlockUpload();
       });
     }, err => {
+
+      this.unBlockUpload();
       this.flashMessageService.show(err.message, {
         cssClass: 'alert-danger',
         timeOut: 5000

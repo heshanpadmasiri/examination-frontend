@@ -10,5 +10,5 @@
       <option *ngFor="let user of academicUsers" [value]="user">{{user}}</option>
     </select>
   </div>
-  <input type="submit" class="btn btn-primary" value="{{btnText}}" [disabled]="block">
+  <input type="submit" class="btn btn-primary" value="{{btnText}}" [attr.disabled]="block ? '' : null">
 </form>
