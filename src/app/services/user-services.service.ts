@@ -26,6 +26,10 @@ export class UserServicesService {
     return this.http.get('http://localhost:3000/modules/adminModules', {params: params}) as Observable<DataMessage>;
   }
 
+  getAcademicUsers(){
+    return this.http.get(this.baseUrl + '/academicUsers') as Observable<DataMessage>;
+  }
+
   requestReCorrection(moduleId: string) {
     const params = {
       userId: this.authService.getUserId(),

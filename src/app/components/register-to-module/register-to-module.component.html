@@ -5,5 +5,5 @@
     <input type="text" class="form-control" [(ngModel)]="moduleCode" name="ModuleCode">
   </div>
 
-  <input type="submit" class="btn btn-primary" value="Submit">
+  <input type="submit" class="btn btn-primary" value="{{btnText}}" [disabled]="block">
 </form>

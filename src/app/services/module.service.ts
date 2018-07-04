@@ -30,6 +30,14 @@ export class ModuleService {
     return this.http.post(this.moduleServiceEndpoint + 'updateResults', params) as Observable<SimpleMessage>;
   }
 
+  createModule(moduleId: string, admins: any) {
+    const params = {
+      moduleCode: moduleId,
+      admins: admins
+    };
+    return this.http.post(this.moduleServiceEndpoint + 'createModule', params) as Observable<SimpleMessage>;
+  }
+
 }
 
 interface ModuleDataMessage {

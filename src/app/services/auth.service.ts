@@ -35,6 +35,10 @@ export class AuthService {
     return this.isAuthenticated() && (this.getUserType() === 'academic');
   }
 
+  public isAdmin(): boolean {
+    return this.isAuthenticated() && (this.getUserType() === 'admin');
+  }
+
   public isAuthenticated(): boolean {
     // get the token
     const token = this.getToken();
