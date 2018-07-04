@@ -64,7 +64,7 @@ export class FileUploadComponent implements OnInit {
     this.fireBaseFileStorage.upload(fileName, event.target.files[0]).then(success => {
 
       this.moduleServices.recordUpload(this.module, fileName).subscribe(res => {
-        if(res.success){
+        if (res.success) {
           this.flashMessageService.show('UploadComplete', {
             cssClass: 'alert-success',
             timeOut: 5000
@@ -78,7 +78,7 @@ export class FileUploadComponent implements OnInit {
           });
         }
       });
-    }, err =>{
+    }, err => {
       this.flashMessageService.show(err.message, {
         cssClass: 'alert-danger',
         timeOut: 5000

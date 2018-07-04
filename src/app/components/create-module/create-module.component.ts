@@ -22,8 +22,7 @@ export class CreateModuleComponent implements OnInit {
     private userService: UserServicesService,
     private flashMessageService: FlashMessagesService,
     private validationService: ValidateService,
-  )
-  {
+  ) {
     this.block = false;
     this.btnText = 'Submit';
   }
