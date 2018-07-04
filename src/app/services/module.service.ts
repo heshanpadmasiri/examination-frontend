@@ -38,6 +38,14 @@ export class ModuleService {
     return this.http.post(this.moduleServiceEndpoint + 'createModule', params) as Observable<SimpleMessage>;
   }
 
+  recordUpload(moduleId: string, fileName: string) {
+    const params = {
+      moduleId: moduleId,
+      fileName: fileName
+    };
+    return this.http.post(this.moduleServiceEndpoint + 'file-upload', params) as Observable<SimpleMessage>;
+  }
+
 }
 
 interface ModuleDataMessage {

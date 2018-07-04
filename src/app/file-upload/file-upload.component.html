@@ -1,5 +1,5 @@
 <h2 class='page-header'>Upload File</h2>
-<form (submit)="onSubmit()">
+<form>
   <div class="form-group">
     <label>Module:</label>
     <select #select class="form-control" id="moduleSelect" (change)="onChange(select.value)">
@@ -10,5 +10,4 @@
     <label >File:</label>
     <input type="file" (change)="upload($event)" accept=".pdf,.doc,.docx" />
   </div>
-  <input type="submit" class="btn btn-primary" value="{{btnText}}" [disabled]="block">
 </form>

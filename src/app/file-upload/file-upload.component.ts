@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {UserServicesService} from '../services/user-services.service';
 import {FlashMessagesService} from 'angular2-flash-messages';
+import {AngularFireStorage} from 'angularfire2/storage';
+import {ModuleService} from '../services/module.service';
+import {map} from 'rxjs/operators';
+import {observable} from 'rxjs/symbol/observable';
 
 @Component({
   selector: 'app-file-upload',
@@ -13,12 +17,15 @@ export class FileUploadComponent implements OnInit {
   module: string;
   block = false;
   btnText: string;
+  uploadProgress: number;
 
   constructor(
     private userService: UserServicesService,
-    private flashMessageService: FlashMessagesService
+    private flashMessageService: FlashMessagesService,
+    private fireBaseFileStorage: AngularFireStorage,
+    private moduleServices: ModuleService
   ) {
-    this.btnText = 'Upload';
+    this.blockUpload();
   }
 
   ngOnInit() {
@@ -26,6 +33,7 @@ export class FileUploadComponent implements OnInit {
       if (res.success) {
         this.adminModules = res.msg;
         this.module = this.adminModules[0];
+        this.unBlockUpload();
       } else {
         this.flashMessageService.show('Internal Error', {
           cssClass: 'alert-danger',
@@ -35,16 +43,12 @@ export class FileUploadComponent implements OnInit {
     });
   }
 
-  onSubmit() {
-
-  }
-
   blockUpload() {
     this.block = true;
     this.btnText = 'Wait';
   }
 
-  upBlockUpload() {
+  unBlockUpload() {
     this.block = false;
     this.btnText = 'Upload';
   }
@@ -55,7 +59,31 @@ export class FileUploadComponent implements OnInit {
   }
 
   upload(event: any) {
+    this.blockUpload();
+    const fileName = event.target.files[0].name;
+    this.fireBaseFileStorage.upload(fileName, event.target.files[0]).then(success => {
 
+      this.moduleServices.recordUpload(this.module, fileName).subscribe(res => {
+        if(res.success){
+          this.flashMessageService.show('UploadComplete', {
+            cssClass: 'alert-success',
+            timeOut: 5000
+          });
+          this.unBlockUpload();
+        } else {
+          console.log(res);
+          this.flashMessageService.show(res.msg, {
+            cssClass: 'alert-danger',
+            timeOut: 5000
+          });
+        }
+      });
+    }, err =>{
+      this.flashMessageService.show(err.message, {
+        cssClass: 'alert-danger',
+        timeOut: 5000
+      });
+    });
   }
 
 }

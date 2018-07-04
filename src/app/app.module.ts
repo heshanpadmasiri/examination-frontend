@@ -24,6 +24,8 @@ import {EnterResultsComponent} from './enter-results/enter-results.component';
 import {ModuleService} from './services/module.service';
 import {CreateModuleComponent} from './components/create-module/create-module.component';
 import { FileUploadComponent } from './file-upload/file-upload.component';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireStorageModule } from 'angularfire2/storage';
 
 // routes
 const appRoutes: Routes = [
@@ -59,7 +61,16 @@ const appRoutes: Routes = [
     FormsModule,
     RouterModule.forRoot(appRoutes),
     FlashMessagesModule.forRoot(),
-    HttpClientModule
+    HttpClientModule,
+    AngularFireModule.initializeApp({
+      apiKey: 'AIzaSyBzZJBsIqkrDXhU1IY-QNcFtVQn-as-DcM',
+      authDomain: 'examination-system-cd948.firebaseapp.com',
+      databaseURL: 'https://examination-system-cd948.firebaseio.com',
+      projectId: 'examination-system-cd948',
+      storageBucket: 'examination-system-cd948.appspot.com',
+      messagingSenderId: '17375303111'
+    }),
+    AngularFireStorageModule
   ],
   providers: [
     ValidateService,
