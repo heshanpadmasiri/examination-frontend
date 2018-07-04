@@ -21,6 +21,10 @@ export class ModuleService {
     return this.http.get(this.moduleServiceEndpoint + 'moduleData', {params: params}) as Observable<ModuleDataMessage>;
   }
 
+  getModuleList() {
+    return this.http.get(this.moduleServiceEndpoint + '/get-modules') as Observable<ModuleDataMessage>;
+  }
+
   updateResults(moduleId: string, result: any) {
     const params = {
       moduleId: moduleId,

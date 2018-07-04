@@ -39,6 +39,17 @@ export class FilesComponent implements OnInit {
       });
     } else {
       // todo: get the list of all available modules
+      this.moduleServices.getModuleList().subscribe(res => {
+        if (res.success) {
+          this.modules = res.msg;
+          this.module = this.modules[0];
+          this.moduleServices.getFileList(this.module).subscribe(next => {
+            if (next.success) {
+              this.updateFileList(next.msg);
+            }
+          });
+        }
+      });
     }
   }
 
