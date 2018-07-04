@@ -61,7 +61,8 @@ export class FileUploadComponent implements OnInit {
   upload(event: any) {
     this.blockUpload();
     const fileName = event.target.files[0].name;
-    this.fireBaseFileStorage.upload(fileName, event.target.files[0]).then(success => {
+    const fileRef = this.fireBaseFileStorage.ref(fileName);
+    fileRef.put(event.target.files[0]).then(success => {
 
       this.moduleServices.recordUpload(this.module, fileName).subscribe(res => {
         if (res.success) {
@@ -70,7 +71,7 @@ export class FileUploadComponent implements OnInit {
             timeOut: 5000
           });
         } else {
-          console.log(res);
+
           this.flashMessageService.show('Upload failed', {
             cssClass: 'alert-danger',
             timeOut: 5000

@@ -46,6 +46,13 @@ export class ModuleService {
     return this.http.post(this.moduleServiceEndpoint + 'file-upload', params) as Observable<SimpleMessage>;
   }
 
+  getFileList(moduleId: string) {
+    const params = {
+      moduleId: moduleId
+    };
+    return this.http.get(this.moduleServiceEndpoint + 'file-list', {params: params}) as Observable<ModuleDataMessage>;
+  }
+
 }
 
 interface ModuleDataMessage {

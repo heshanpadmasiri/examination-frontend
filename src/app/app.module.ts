@@ -26,6 +26,7 @@ import {CreateModuleComponent} from './components/create-module/create-module.co
 import { FileUploadComponent } from './file-upload/file-upload.component';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireStorageModule } from 'angularfire2/storage';
+import { FilesComponent } from './files/files.component';
 
 // routes
 const appRoutes: Routes = [
@@ -38,7 +39,8 @@ const appRoutes: Routes = [
   {path: 're-correction', component: ReCorrectionComponent, canActivate: [AuthGuard]},
   {path: 'enter-results', component: EnterResultsComponent, canActivate: [AuthGuard]},
   {path: 'create-module', component: CreateModuleComponent, canActivate: [AuthGuard]},
-  {path: 'upload-file', component: FileUploadComponent, canActivate: [AuthGuard]}
+  {path: 'upload-file', component: FileUploadComponent, canActivate: [AuthGuard]},
+  {path: 'files', component: FilesComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({
@@ -54,7 +56,8 @@ const appRoutes: Routes = [
     ReCorrectionComponent,
     EnterResultsComponent,
     CreateModuleComponent,
-    FileUploadComponent
+    FileUploadComponent,
+    FilesComponent
   ],
   imports: [
     BrowserModule,
