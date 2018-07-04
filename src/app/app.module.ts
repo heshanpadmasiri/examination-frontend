@@ -23,6 +23,7 @@ import {ReCorrectionComponent} from './components/re-correction/re-correction.co
 import {EnterResultsComponent} from './enter-results/enter-results.component';
 import {ModuleService} from './services/module.service';
 import {CreateModuleComponent} from './components/create-module/create-module.component';
+import { FileUploadComponent } from './file-upload/file-upload.component';
 
 // routes
 const appRoutes: Routes = [
@@ -34,7 +35,8 @@ const appRoutes: Routes = [
   {path: 'register-module', component: RegisterToModuleComponent, canActivate: [AuthGuard]},
   {path: 're-correction', component: ReCorrectionComponent, canActivate: [AuthGuard]},
   {path: 'enter-results', component: EnterResultsComponent, canActivate: [AuthGuard]},
-  {path: 'create-module', component: CreateModuleComponent, canActivate: [AuthGuard]}
+  {path: 'create-module', component: CreateModuleComponent, canActivate: [AuthGuard]},
+  {path: 'upload-file', component: FileUploadComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({
@@ -49,7 +51,8 @@ const appRoutes: Routes = [
     RegisterToModuleComponent,
     ReCorrectionComponent,
     EnterResultsComponent,
-    CreateModuleComponent
+    CreateModuleComponent,
+    FileUploadComponent
   ],
   imports: [
     BrowserModule,
